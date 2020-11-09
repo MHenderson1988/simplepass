@@ -38,6 +38,7 @@ def random_number():
 def random_symbol():
     return random.choice(symbols)
 
+
 function_list = [random_upper_case(), random_lower_case(), random_symbol(), random_number()]
 
 
@@ -50,6 +51,7 @@ Takes no input and returns a list with the ascii characters
 def minimum_one_each_type():
     char_list = [random_upper_case(), random_lower_case(), random_symbol(), random_number()]
     return char_list
+
 
 """
 This function populates a list which already has one of each ascii character type.  It takes a number greater than 3 
