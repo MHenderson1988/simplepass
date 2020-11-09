@@ -16,30 +16,13 @@ for i in string.ascii_lowercase:
 for i in string.ascii_uppercase:
     upper_case.append(i)
 
-for i in string.printable[0:10]:
+for i in string.digits:
     numbers.append(i)
 
-for i in string.printable[62:94]:
+for i in string.punctuation:
     symbols.append(i)
 
-
-def random_lower_case():
-    return random.choice(lower_case)
-
-
-def random_upper_case():
-    return random.choice(upper_case)
-
-
-def random_number():
-    return random.choice(numbers)
-
-
-def random_symbol():
-    return random.choice(symbols)
-
-
-function_list = [random_upper_case(), random_lower_case(), random_symbol(), random_number()]
+function_list = [random.choice(upper_case), random.choice(lower_case), random.choice(symbols), random.choice(numbers)]
 
 
 """
@@ -49,7 +32,7 @@ Takes no input and returns a list with the ascii characters
 
 
 def minimum_one_each_type():
-    char_list = [random_upper_case(), random_lower_case(), random_symbol(), random_number()]
+    char_list = [random.choice(upper_case), random.choice(lower_case), random.choice(symbols), random.choice(numbers)]
     return char_list
 
 
