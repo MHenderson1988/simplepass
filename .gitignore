@@ -1,9 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-inputdata/
-lineofsight_graphs/
-output/
-/test/data/line_of_sight_analysis.kml
-.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
