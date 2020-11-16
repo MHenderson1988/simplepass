@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from main.classes.users import Users
 
 website_list = ["hello.com", "goodbye.com", "google.com", "testing.com"]
@@ -35,11 +36,11 @@ class TestUsers(TestCase):
 
     def test_edit_website_name(self):
         user = Users("Mark")
-        expected_result = {'goodbye.co.uk': '321', 'google.com': 'hello', 'testing.com': 'password', 'hello.co.uk':
-            '123'}
+        expected_result = {'goodbye.com': '321', 'google.com': 'hello', 'hello.co.uk':
+            '123', 'testing.com': 'password'}
         i = 0
         while i < len(website_list):
             user.add_password(website_list[i], pass_list[i])
             i += 1
         user.edit_website_name('hello.com', 'hello.co.uk')
-        print(user.password_list)
+        self.assertEqual(user.password_list, expected_result)
