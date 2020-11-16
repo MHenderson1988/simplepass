@@ -1,5 +1,5 @@
-from password_generator import generate_password
+from main.gui_main import create_main_gui
 
 if __name__ == '__main__':
-    length_of_password = input("Length of password (between 4 and 20 characters): ")
-    print(generate_password(int(length_of_password)))
+    print("Running...")
+    create_main_gui()
