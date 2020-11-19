@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from main.classes.users import Users
+from main.classes.user import User
 
 website_list = ["hello.com", "goodbye.com", "google.com", "testing.com"]
 pass_list = ["123", "321", "hello", "password"]
@@ -8,14 +8,14 @@ pass_list = ["123", "321", "hello", "password"]
 
 class TestUsers(TestCase):
     def test_change_name(self):
-        user = Users("Dave")
+        user = User("Dave")
         list_of_names = ["Mark", "Terry", "Mike"]
         for i in list_of_names:
             user.change_name(i)
             self.assertEqual(user.name, i)
 
     def test_add_password(self):
-        user = Users("Mark")
+        user = User("Mark")
         expected_result = {'hello.com': '123', 'goodbye.com': '321', 'google.com': 'hello', 'testing.com': 'password'}
         i = 0
         while i < len(website_list):
@@ -24,7 +24,7 @@ class TestUsers(TestCase):
         self.assertEqual(user.password_list, expected_result)
 
     def test_remove_website(self):
-        user = Users("Mark")
+        user = User("Mark")
         expected_result = {'google.com': 'hello', 'testing.com': 'password'}
         i = 0
         while i < len(website_list):
@@ -35,7 +35,7 @@ class TestUsers(TestCase):
         self.assertEqual(user.password_list, expected_result)
 
     def test_edit_website_name(self):
-        user = Users("Mark")
+        user = User("Mark")
         expected_result = {'goodbye.com': '321', 'google.com': 'hello', 'hello.co.uk':
             '123', 'testing.com': 'password'}
         i = 0
