@@ -28,8 +28,12 @@ def create_main_gui():
         if event == sg.WINDOW_CLOSED or event == 'Quit':
             break
         if event == '-NEW_USER_NAME_BUTTON-':
-            updated_user_list, names_to_display = update_user_list(user_list, values['-NEW_USER_NAME_TEXT-'])
-            window['-USER_NAMES_LIST-'].update(names_to_display)
+            if not len(values['-NEW_USER_NAME_TEXT-']) > 0:
+                sg.popup_error('Username must have value!')
+            else:
+                updated_user_list = update_user_list(user_list, values['-NEW_USER_NAME_TEXT-'])
+                names_to_display = [user.name for user in updated_user_list]
+                window['-USER_NAMES_LIST-'].update(names_to_display)
 
     # Finish up by removing from the screen
     window.close()
