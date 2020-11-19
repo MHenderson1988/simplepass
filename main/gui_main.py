@@ -8,13 +8,15 @@ def create_main_gui():
     # Define the window's contents
     left_column = [[sg.Text("-Users-")],
                    [sg.Listbox(values=[], key='-USER_NAMES_LIST-', size=(30, 6))],
-                   [sg.InputText(key='-NEW_USER_NAME_TEXT-', size=(30, 4))],
-                   [sg.Button('Add user', key='-NEW_USER_NAME_BUTTON-')]]
+                   [sg.Button('Add', key='-NEW_USER_NAME_BUTTON-')],
+                   [sg.Button('Edit', key='-EDIT_USER_NAME_BUTTON-')],
+                   [sg.Button('Delete', key='-DELETE_USER_NAME_BUTTON-')]]
 
     right_column = [[sg.Text("-Websites and passwords-")],
-                    [sg.Listbox(values=[], key='-WEBSITES-AND-PASSWORDS', size=(30, 6))],
-                    [sg.InputText(key='-A_WEBSITE_NAME', size=(30, 4))],
-                    [sg.Button('Generate Password', key='-PASSWORD_GENERATE_BUTTON')]]
+                    [sg.Listbox(values=[], key='-WEBSITES-AND-PASSWORDS-', size=(30, 6))],
+                    [sg.Button('Add', key='-ADD_WEBSITE_BUTTON-')],
+                    [sg.Button('Edit', key='-EDIT_WEBSITE_BUTTON-')],
+                    [sg.Button('Remove', key='-REMOVE_WEBSITE_BUTTON-')]]
 
     layout = [[sg.Column(left_column), sg.Column(right_column)]]
 
@@ -28,13 +30,13 @@ def create_main_gui():
         if event == sg.WINDOW_CLOSED or event == 'Quit':
             break
         if event == '-NEW_USER_NAME_BUTTON-':
-            if not len(values['-NEW_USER_NAME_TEXT-']) > 0:
+            user_name = sg.popup_get_text('New user name:')
+            if not len(user_name) > 0:
                 sg.popup_error('Username must have value!')
             else:
-                updated_user_list = update_user_list(user_list, values['-NEW_USER_NAME_TEXT-'])
+                updated_user_list = update_user_list(user_list, user_name)
                 names_to_display = [user.name for user in updated_user_list]
                 window['-USER_NAMES_LIST-'].update(names_to_display)
-                window['-NEW_USER_NAME_TEXT-'].update('')
 
     # Finish up by removing from the screen
     window.close()
