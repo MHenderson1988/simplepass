@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from main.gui_functions import update_user_list
+from main.gui_functions import new_user_name
 
 user_list = []
 
@@ -30,13 +30,7 @@ def create_main_gui():
         if event == sg.WINDOW_CLOSED or event == 'Quit':
             break
         if event == '-NEW_USER_NAME_BUTTON-':
-            user_name = sg.popup_get_text('New user name:')
-            if not len(user_name) > 0:
-                sg.popup_error('Username must have value!')
-            else:
-                updated_user_list = update_user_list(user_list, user_name)
-                names_to_display = [user.name for user in updated_user_list]
-                window['-USER_NAMES_LIST-'].update(names_to_display)
+            new_user_name(window, user_list)
 
     # Finish up by removing from the screen
     window.close()
