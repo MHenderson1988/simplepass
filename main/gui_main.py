@@ -34,6 +34,7 @@ def create_main_gui():
                 updated_user_list = update_user_list(user_list, values['-NEW_USER_NAME_TEXT-'])
                 names_to_display = [user.name for user in updated_user_list]
                 window['-USER_NAMES_LIST-'].update(names_to_display)
+                window['-NEW_USER_NAME_TEXT-'].update('')
 
     # Finish up by removing from the screen
     window.close()
