@@ -1,5 +1,5 @@
 from unittest import TestCase
-from main.gui_functions import update_user_list
+from main.gui_functions import new_user_name, update_user_list
 
 
 class TestGuiFunctions(TestCase):

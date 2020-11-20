@@ -30,7 +30,8 @@ def create_main_gui():
         if event == sg.WINDOW_CLOSED or event == 'Quit':
             break
         if event == '-NEW_USER_NAME_BUTTON-':
-            new_user_name(window, user_list)
-
+            new_user_name(user_list)
+            names = [user.name for user in user_list]
+            window['-USER_NAMES_LIST-'].update(names)
     # Finish up by removing from the screen
     window.close()

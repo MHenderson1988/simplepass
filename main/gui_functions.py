@@ -9,14 +9,12 @@ list.
 """
 
 
-def new_user_name(aWindow, aUserList):
+def new_user_name(aUserList):
     user_name = sg.popup_get_text('New user name:')
     if not len(user_name) > 0:
         sg.popup_error('Username must have value!')
     else:
-        updated_user_list = update_user_list(aUserList, user_name)
-        names_to_display = [user.name for user in updated_user_list]
-        aWindow['-USER_NAMES_LIST-'].update(names_to_display)
+        return update_user_list(aUserList, user_name)
 
 
 """
@@ -28,8 +26,8 @@ def update_user_list(user_list, aName):
     try:
         new_user = User(aName)
         user_list.append(new_user)
-        sorted_list = sorted(user_list, key=operator.attrgetter('name'))
-        return sorted_list
+        user_list.sort(key=operator.attrgetter('name'))
+        return user_list
     except TypeError:
         print("Please enter a valid string")
 
